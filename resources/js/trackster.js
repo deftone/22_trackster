@@ -8,11 +8,13 @@ var API_KEY = '8d035abedaf3e5b9b540ab6475789acd';
 $(document).ready(function() {
   $('#search_button').on('click', function(){
     Trackster.searchTracksByTitle($('input').val());
+    $('h1').addClass('blink_me');
   });
   //alternative: when pressing "Enter" (==13) (e.which or e.keyCode works both) see: https://css-tricks.com/snippets/javascript/javascript-keycodes/
   $(document).keypress(function(e) {
     if(e.keyCode == 13) {
       Trackster.searchTracksByTitle($('input').val());
+      $('h1').addClass('blink_me');
     }
   });
 });
@@ -50,6 +52,7 @@ Trackster.searchTracksByTitle = function(title) {
     url: 'https://ws.audioscrobbler.com/2.0/?method=track.search&track='+title+'&api_key='+API_KEY+'&format=json',
     datatype: 'jsonp',
     success: function(data) {
+      $('h1').removeClass('blink_me');
       Trackster.renderTracks(data.results.trackmatches.track);
     }
   });
