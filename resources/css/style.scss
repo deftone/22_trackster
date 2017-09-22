@@ -15,8 +15,12 @@ body{
   font-family: 'Righteous', cursive;
 }
 
-header{
+main p{
+  text-align: center;
+  padding: 20px;
+}
 
+header{
   .row.header{
     background-color: $color-header;
     padding: 2rem 0;

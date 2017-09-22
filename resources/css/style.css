@@ -4,6 +4,10 @@ html {
 body {
   font-family: 'Righteous', cursive; }
 
+main p {
+  text-align: center;
+  padding: 20px; }
+
 header .row.header {
   background-color: #23023f;
   padding: 2rem 0;
