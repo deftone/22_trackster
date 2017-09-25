@@ -26,22 +26,52 @@ $(document).ready(function() {
 */
 Trackster.renderTracks = function(tracks) {
   var i=0;
-  var list_item = '';
+  var $list_item = '';
   var $htmlTrackRow = $('#htmlTrackRow');
   var $mediumAlbumArt = '';
   //clear list first
   $htmlTrackRow.empty();
   for (i=0; i<tracks.length; i++){
-      list_item = '<div class="row list">'
+      $list_item = $('<div class="list_item">'
               +'<a class="col-xs-1 col-xs-offset-1" href="'+ tracks[i].url + '" target="_blank">'
                 +'<i class = "fa fa-play-circle-o"></i> </a>'
               +'<span class="col-xs-4"> '+tracks[i].name+' </span>'
               +'<span class="col-xs-2"> '+tracks[i].artist+' </span>'
               +'<span class="col-xs-2"> <img src="' + tracks[i].image[1]["#text"] + '"/></span>'
-              +'<span class="col-xs-2"> '+tracks[i].listeners+' </span> </div>';
-      $htmlTrackRow.append(list_item);
+              +'<span class="col-xs-2"> '+tracks[i].listeners+' </span> </div>');
+
+      $list_item.data('name', tracks[i].name);
+      $list_item.data('artist', tracks[i].artist);
+      $htmlTrackRow.append($list_item);
   }
+
+  //listener for ordering songs
+  $('.song').on('click', function() {
+    Trackster.sortBySong($list_item);
+  });
+
+  //listener for ordering songs
+  $('.artist').on('click', function() {
+    Trackster.sortByArtist($list_item);
+  });
+
 };
+
+
+Trackster.sortBySong = function($list_item){
+  console.log('sort by song');
+  $( ".list_item" ).each(function( index ) {
+    console.log( index + ": " + $( this ).data('name') );
+  });
+};
+
+Trackster.sortByArtist = function($list_item){
+  console.log('sort by artist');
+  $( ".list_item" ).each(function( index ) {
+    console.log( index + ": " + $( this ).data('artist') );
+  });
+};
+
 
 /*
   Given a search term as a string, query the LastFM API.

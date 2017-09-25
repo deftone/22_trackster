@@ -47,16 +47,16 @@ header .row.attributes {
     padding-left: 0;
     font-size: 1rem; }
 
-.list {
+.list_item {
   display: flex;
   align-items: center;
   padding: .5rem;
   border-bottom: 1px solid grey;
   background-color: #cccccc;
   font-size: 1rem; }
-  .list span {
+  .list_item span {
     padding-left: 0; }
-  .list i {
+  .list_item i {
     color: #ff00ab;
     font-size: 1.4rem; }
 
