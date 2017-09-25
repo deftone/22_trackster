@@ -1,11 +1,16 @@
-$color-header: rgb(35, 2, 63);
-$color-list-header: rgb(104, 0, 255);
-$color-list-body: rgb(204, 204, 204);
-$color-logo: rgb(255, 0, 171);
-$color-search-text: rgb(191, 191, 191);
-$color-search-button: rgb(255, 102, 204);
-$color-text: rgb(74, 74, 74);
+$color-header:  hsl(185, 100, 30);
+$color-logo: hsl(185, 100, 50);
+$color-search-text: hsl(148, 100, 25);
+$color-search-button-hover: hsl(185, 100, 45);
 
+$color-attributes-bg: hsl(148, 100, 50);
+$color-attributes:hsl(185, 100, 20);
+
+$color-tracks-bg: hsl(148, 100, 25);
+$color-tracks: hsl(148, 100, 50);
+$color-play: hsl(185, 100, 50);
+
+// $color-main-bg: hsl(148, 100, 80);
 
 html{
   font-size: 16px;
@@ -18,6 +23,8 @@ body{
 main p{
   text-align: center;
   padding: 15px 0 0 0;
+  color: $color-attributes;
+  // background-color: $color-main-bg;
 
   &:first-child{
     padding-top: 35px;
@@ -35,6 +42,7 @@ header{
   h1{
     height: 2.5rem;
     margin: 0;
+    text-shadow: 3px 3px $color-attributes;
   }
 
   .blink_me {
@@ -52,7 +60,7 @@ header{
     margin-right: 0.5rem;
     border-radius: 1rem;
     font-size: 1rem;
-    color: 3$color-search-text;
+    color: $color-search-text;
   }
 
   i.fa-search{
@@ -63,14 +71,15 @@ header{
     text-align: center;
 
     &:hover{
-      background-color: $color-search-button;
+      background-color: $color-search-button-hover;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.9);
       cursor: pointer;
     }
   }
 
   .row.attributes{
-    background-color: $color-list-header;
-    color: white;
+    background-color: $color-attributes-bg;
+    color: $color-attributes;
 
     h2{
       margin-top: 1rem;
@@ -96,16 +105,17 @@ header{
   display: flex;
   align-items: center;
   padding: .5rem;
-  border-bottom: 1px solid grey;
-  background-color: $color-list-body;
+  border-bottom: 1px solid $color-play;
+  background-color: $color-tracks-bg;
   font-size: 1rem;
 
   span{
     padding-left: 0;
+    color: $color-tracks;
   }
 
   i{
-    color: $color-logo;
+    color: $color-play;
     font-size: 1.4rem;
   }
 
