@@ -19,24 +19,31 @@
     </div>
 
     <div class="row attributes">
-      <h2 class="col-xs-4 col-xs-offset-2 song"> Song </h2>
-      <h2 class="col-xs-2 artist"> Artist </h2>
+      <h2 class="col-xs-4 col-xs-offset-2 song"> Song
+        <i class="fa fa-sort song" aria-hidden="true"></i>
+      </h2>
+      <h2 class="col-xs-2 artist"> Artist
+        <i class="fa fa-sort artist" aria-hidden="true"></i>
+      </h2>
       <h2 class="col-xs-2"> Album </h2>
-      <h2 class="col-xs-2"> Listeners </h2>
+      <h2 class="col-xs-2 listeners"> Listeners
+        <i class="fa fa-sort listeners" aria-hidden="true"></i>
+      </h2>
     </div>
   </header>
 
 
       <main class="container-fluid" id="htmlTrackRow">
         <p>Enter the name (or beginning) of a song or band. Hit "Enter" or click the Search Button. And be patient... ;)</p>
-        <p>If you click on the play button (todo), you'll be forwarded to the song/artist.</p>
-        <p>You can also sort the results by song or artist name.</p>
+        <p>You can order the results by song or artist name and also by their popularity.</p>
+        <p> If you click on the play button <i class = "fa fa-play-circle-o"></i>, you'll be forwarded to the song/artist on last.fm.</p>
           <!-- this will be replaced/filled with jquery -->
       </main>
 
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"
           integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
           crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
   <script type="text/javascript" src="./resources/js/trackster.js"></script>
   <script type="text/javascript" src="./resources/js/tests.js"></script>
 </body>

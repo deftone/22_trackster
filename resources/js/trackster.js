@@ -3,7 +3,9 @@
 // Shared secret 	56559e583f7f9a88fdd84bee21f831bb
 // Registered to 	deftone33
 var Trackster = {};
+var tracks = [];
 var API_KEY = '8d035abedaf3e5b9b540ab6475789acd';
+
 
 $(document).ready(function() {
   $('#search_button').on('click', function(){
@@ -17,6 +19,32 @@ $(document).ready(function() {
       $('h1').addClass('blink_me');
     }
   });
+
+  //listener for ordering songs
+  $('.song').on('click', function() {
+    tracks.sort(function(track_a, track_b){
+        return track_a.name.localeCompare(track_b.name);
+    });
+    Trackster.renderTracks(tracks);
+  });
+
+  //listener for ordering artists
+  $('.artist').on('click', function() {
+    tracks.sort(function(track_a, track_b){
+        return track_a.artist.localeCompare(track_b.artist);
+    });
+    Trackster.renderTracks(tracks);
+  });
+
+  //listener for ordering listeners
+  $('.listeners').on('click', function() {
+    tracks.sort(function(track_a, track_b){
+        return track_b.listeners - track_a.listeners;
+    });
+    Trackster.renderTracks(tracks);
+  });
+
+
 });
 
 
@@ -24,54 +52,23 @@ $(document).ready(function() {
   Given an array of track data, create the HTML for a Bootstrap row for each.
   Append each "row" to the container in the body to display all tracks.
 */
-Trackster.renderTracks = function(tracks) {
+Trackster.renderTracks = function() {
   var i=0;
   var $list_item = '';
   var $htmlTrackRow = $('#htmlTrackRow');
-  var $mediumAlbumArt = '';
   //clear list first
   $htmlTrackRow.empty();
   for (i=0; i<tracks.length; i++){
-      $list_item = $('<div class="list_item">'
+      $list_item = $('<div class="list_item row">'
               +'<a class="col-xs-1 col-xs-offset-1" href="'+ tracks[i].url + '" target="_blank">'
                 +'<i class = "fa fa-play-circle-o"></i> </a>'
               +'<span class="col-xs-4"> '+tracks[i].name+' </span>'
               +'<span class="col-xs-2"> '+tracks[i].artist+' </span>'
-              +'<span class="col-xs-2"> <img src="' + tracks[i].image[1]["#text"] + '"/></span>'
-              +'<span class="col-xs-2"> '+tracks[i].listeners+' </span> </div>');
-
-      $list_item.data('name', tracks[i].name);
-      $list_item.data('artist', tracks[i].artist);
+              +'<span class="col-xs-2"> <img src="' + tracks[i].album + '"/></span>'
+              +'<span class="col-xs-2 numberal"> '+numeral(tracks[i].listeners).format('0,0')+' </span> </div>');
       $htmlTrackRow.append($list_item);
   }
-
-  //listener for ordering songs
-  $('.song').on('click', function() {
-    Trackster.sortBySong($list_item);
-  });
-
-  //listener for ordering songs
-  $('.artist').on('click', function() {
-    Trackster.sortByArtist($list_item);
-  });
-
 };
-
-
-Trackster.sortBySong = function($list_item){
-  console.log('sort by song');
-  $( ".list_item" ).each(function( index ) {
-    console.log( index + ": " + $( this ).data('name') );
-  });
-};
-
-Trackster.sortByArtist = function($list_item){
-  console.log('sort by artist');
-  $( ".list_item" ).each(function( index ) {
-    console.log( index + ": " + $( this ).data('artist') );
-  });
-};
-
 
 /*
   Given a search term as a string, query the LastFM API.
@@ -82,8 +79,34 @@ Trackster.searchTracksByTitle = function(title) {
     url: 'https://ws.audioscrobbler.com/2.0/?method=track.search&track='+title+'&api_key='+API_KEY+'&format=json',
     datatype: 'jsonp',
     success: function(data) {
+      //when ajax has been successful, blinking stopps
       $('h1').removeClass('blink_me');
-      Trackster.renderTracks(data.results.trackmatches.track);
+
+      //make objects with info we need:
+      var trackInfo = data.results.trackmatches.track;
+      var trackOject = {};
+      tracks = [];
+      for (var i=0; i<trackInfo.length; i++){
+        trackOject = {
+          url: trackInfo[i].url,
+          name: trackInfo[i].name,
+          artist: trackInfo[i].artist,
+          album: trackInfo[i].image[1]["#text"],
+          listeners: trackInfo[i].listeners
+        }
+        tracks.push(trackOject);
+      }
+      Trackster.renderTracks(tracks);
     }
   });
 };
+
+
+// ohne 'row' und nur 'list_item' dann wuerde folgendes funktionieren:
+
+// $list_item.data('name', tracks[i].name);
+// $list_item.data('artist', tracks[i].artist);
+
+// $(".list_item").each(function(index) {
+// console.log( index + ": " + $( this ).data('name') );
+// });

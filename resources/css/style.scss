@@ -17,7 +17,11 @@ body{
 
 main p{
   text-align: center;
-  padding: 20px;
+  padding: 15px 0 0 0;
+
+  &:first-child{
+    padding-top: 35px;
+  }
 }
 
 header{
@@ -74,6 +78,17 @@ header{
       padding-left: 0;
       font-size: 1rem;
     }
+
+    .song,
+    .artist,
+    .listeners{
+      cursor: pointer;
+    }
+
+    .listeners{
+      text-align: right;
+      padding-right: 5%;
+    }
   }
 }
 
@@ -93,4 +108,9 @@ header{
     color: $color-logo;
     font-size: 1.4rem;
   }
- }
+
+  .numberal{
+    text-align: right;
+    padding-right: 5%;
+  }
+}
