@@ -3,12 +3,11 @@
 <head>
   <title>trackster</title>
   <link rel="icon" href="resources/images/favicon.ico" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,500,700" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="./resources/css/reset.css">
-  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="./resources/css/style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Righteous:400,500,700">
+  <link rel="stylesheet" href="./resources/css/reset.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="./resources/css/style.css">
 </head>
 <body>
   <header class="container-fluid">
@@ -25,30 +24,25 @@
       <h2 class="col-xs-2 artist"> Artist
         <i class="fa fa-sort artist" aria-hidden="true"></i>
       </h2>
-      <h2 class="col-xs-2"> Album </h2>
+      <h2 class="col-xs-1"> Album </h2>
       <h2 class="col-xs-2 listeners"> Listeners
         <i class="fa fa-sort listeners" aria-hidden="true"></i>
       </h2>
     </div>
   </header>
 
-
-      <main class="container-fluid" id="htmlTrackRow">
-        <p>Enter the name (or beginning) of a song or band. Hit "Enter" or click the Search Button. And be patient... ;)</p>
-        <p>You can order the results by song or artist name and also by their popularity.</p>
-        <p> If you click on the play button <i class = "fa fa-play-circle-o"></i>, you'll be forwarded to the song/artist on last.fm.</p>
-          <!-- this will be replaced/filled with jquery -->
-
-
-
-
-      </main>
+  <main class="container-fluid" id="htmlTrackRow">
+    <!-- this will be replaced/filled with jquery -->
+    <p>Enter the name (or beginning) of a song or band. Hit "Enter" or click the Search Button. And be patient... ;)</p>
+    <p>You can order the results by song or artist name and also by their popularity.</p>
+    <p> If you click on the play button <i class = "fa fa-play-circle-o"></i>, you'll be forwarded to the song/artist on last.fm.</p>
+  </main>
 
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"
           integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
           crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
-  <script type="text/javascript" src="./resources/js/trackster.js"></script>
-  <script type="text/javascript" src="./resources/js/tests.js"></script>
+  <script src="./resources/js/trackster.js"></script>
+  <script src="./resources/js/tests.js"></script>
 </body>
 </html>

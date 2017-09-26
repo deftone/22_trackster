@@ -4,18 +4,11 @@ html {
 body {
   font-family: 'Righteous', cursive; }
 
-main p {
-  text-align: center;
-  padding: 15px 0 0 0;
-  color: #005e66; }
-  main p:first-child {
-    padding-top: 35px; }
-
 header .row.header {
   background-color: #008c99;
+  color: #00eaff;
   padding: 2rem 0;
-  font-size: 2.5rem;
-  color: #00eaff; }
+  font-size: 2.5rem; }
 header h1 {
   height: 2.5rem;
   margin: 0;
@@ -40,7 +33,7 @@ header i.fa-search {
   color: black;
   text-align: center; }
   header i.fa-search:hover {
-    background-color: #00d2e6;
+    background-color: #00c4d6;
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.9);
     cursor: pointer; }
 header .row.attributes {
@@ -59,20 +52,29 @@ header .row.attributes {
     text-align: right;
     padding-right: 5%; }
 
-.list_item {
+main p {
+  text-align: center;
+  padding: 15px 0 0 0;
+  color: #005e66; }
+  main p:first-child {
+    padding-top: 35px; }
+main .list_item {
   display: flex;
   align-items: center;
   padding: .5rem;
   border-bottom: 1px solid #00eaff;
   background-color: #00803c;
   font-size: 1rem; }
-  .list_item span {
+  main .list_item span {
     padding-left: 0;
     color: #00ff77; }
-  .list_item i {
+  main .list_item i {
     color: #00eaff;
     font-size: 1.4rem; }
-  .list_item .numberal {
+    main .list_item i:hover {
+      color: #00c4d6;
+      text-shadow: 3px 3px #005e66; }
+  main .list_item .numberal {
     text-align: right;
     padding-right: 5%; }
 
