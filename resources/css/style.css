@@ -25,20 +25,21 @@ header input {
   margin-right: 0.5rem;
   border-radius: 1rem;
   font-size: 1rem;
-  color: #00803c; }
+  color: #005e66; }
 header i.fa-search {
   background-color: #00eaff;
   height: 2.5rem;
   border-radius: 1rem;
-  color: black;
+  color: #005e66;
   text-align: center; }
   header i.fa-search:hover {
     background-color: #00c4d6;
+    color: black;
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.9);
     cursor: pointer; }
 header .row.attributes {
   background-color: #00ff77;
-  color: #005e66; }
+  color: #006630; }
   header .row.attributes h2 {
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -62,18 +63,17 @@ main .list_item {
   display: flex;
   align-items: center;
   padding: .5rem;
-  border-bottom: 1px solid #00eaff;
-  background-color: #00803c;
+  border-bottom: 1px solid #00b353;
+  background-color: white;
   font-size: 1rem; }
   main .list_item span {
     padding-left: 0;
-    color: #00ff77; }
+    color: #006630; }
   main .list_item i {
-    color: #00eaff;
+    color: #00b353;
     font-size: 1.4rem; }
     main .list_item i:hover {
-      color: #00c4d6;
-      text-shadow: 3px 3px #005e66; }
+      color: #006630; }
   main .list_item .numberal {
     text-align: right;
     padding-right: 5%; }

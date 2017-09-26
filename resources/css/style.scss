@@ -2,7 +2,8 @@ $color_1_dark:   hsl(185, 100, 20);
 $color_1_medium: hsl(185, 100, 30);
 $color_1_normal: hsl(185, 100, 42);
 $color_1_bright: hsl(185, 100, 50);
-$color_2_dark:   hsl(148, 100, 25);
+$color_2_dark:   hsl(148, 100, 20);
+$color_2_medium: hsl(148, 100, 35);
 $color_2_normal: hsl(148, 100, 50);
 
 html{
@@ -42,17 +43,18 @@ header{
     margin-right: 0.5rem;
     border-radius: 1rem;
     font-size: 1rem;
-    color: $color_2_dark;
+    color: $color_1_dark;
   }
 
   i.fa-search{
     background-color: $color_1_bright;
     height: 2.5rem;
     border-radius: 1rem;
-    color: black;
+    color: $color_1_dark;
     text-align: center;
     &:hover{
       background-color: $color_1_normal;
+      color: black;
       box-shadow: 0 0 12px rgba(0, 0, 0, 0.9);
       cursor: pointer;
     }
@@ -60,7 +62,7 @@ header{
 
   .row.attributes{
     background-color: $color_2_normal;
-    color: $color_1_dark;
+    color: $color_2_dark;
 
     h2{
       margin-top: 1rem;
@@ -96,19 +98,19 @@ main{
     display: flex;
     align-items: center;
     padding: .5rem;
-    border-bottom: 1px solid $color_1_bright;
-    background-color: $color_2_dark;
+    border-bottom: 1px solid $color_2_medium;
+    background-color: white;
     font-size: 1rem;
     span{
       padding-left: 0;
-      color: $color_2_normal;
+      color: $color_2_dark;
     }
     i{
-      color: $color_1_bright;
+      color: $color_2_medium;
       font-size: 1.4rem;
       &:hover{
-        color: $color_1_normal;
-        text-shadow: 3px 3px $color_1_dark;
+        color: $color_2_dark;
+        // text-shadow: 2px 2px $color_2_dark;
       }
     }
     .numberal{
