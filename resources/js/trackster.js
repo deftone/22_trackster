@@ -7,9 +7,10 @@
 // global variables:
 var Trackster = {};
 var tracks = [];
-var artist_up=true;
-var song_up=true;
-var lister_up=true;
+var up = {song: true,
+          artist: true,
+          listeners: true
+};
 var API_KEY = '8d035abedaf3e5b9b540ab6475789acd';
 
 /*
@@ -33,15 +34,15 @@ $(document).ready(function() {
 
   //listener for ordering columns
   $('.song').on('click', function() {
-    song_up = Trackster.sortColumn(song_up, 'name');
+    Trackster.sortColumn('name', false);
   });
 
   $('.artist').on('click', function() {
-    artist_up = Trackster.sortColumn(artist_up, 'artist');
+    Trackster.sortColumn('artist', false);
   });
 
   $('.listeners').on('click', function() {
-    lister_up = Trackster.sortColumn(lister_up, 'listeners');
+    Trackster.sortColumn('listeners', true);
   });
 
 });
@@ -105,17 +106,15 @@ Trackster.renderTracks = function() {
 /*
 function to sort the differnt columns forward and backward
 */
-Trackster.sortColumn = function(up, element){
+Trackster.sortColumn = function(element, number){
   tracks.sort(function(track_a, track_b){
-    var ret = (element == 'listeners') ?
-              track_a[element] - track_b[element]
-              : track_a[element].localeCompare(track_b[element]);
-
-    return up ? ret: -ret;
+    var ret = number ? track_a[element] - track_b[element]
+                     : track_a[element].localeCompare(track_b[element]);
+    return up[element] ? ret: -ret;
   });
 
   Trackster.renderTracks(tracks);
-  return !up;
+  up[element] = !up[element];
 };
 
 
