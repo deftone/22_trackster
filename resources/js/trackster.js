@@ -31,66 +31,23 @@ $(document).ready(function() {
     }
   });
 
-
-  //when search results are avaible:
-  //should i do some if(tracks != null) check? nothing happens if tracks is null (i.e. clicking without searching first)
-  //furthermore: 3 times almost the same function, should be refactored! see at the end of this js.
-  //listener for ordering songs
+  //listener for ordering columns
   $('.song').on('click', function() {
-    if (song_up){
-      //this part i don't know how to refactor :(
-      tracks.sort(function(track_a, track_b){
-          return track_a.name.localeCompare(track_b.name);
-      });
-      Trackster.renderTracks(tracks);
-      song_up = false;
-    }else{
-      tracks.sort(function(track_a, track_b){
-        return track_b.name.localeCompare(track_a.name);
-      });
-      Trackster.renderTracks(tracks);
-      song_up = true;
-    }
+    song_up = Trackster.sortColumn(song_up, 'name');
   });
 
-  //listener for ordering artists
   $('.artist').on('click', function() {
-    if (artist_up){
-      tracks.sort(function(track_a, track_b){
-        return track_a.artist.localeCompare(track_b.artist);
-        // return track_a.artist.localeCompare(track_b.artist);
-      });
-      Trackster.renderTracks(tracks);
-      artist_up=false;
-    } else {
-      tracks.sort(function(track_a, track_b){
-        return track_b.artist.localeCompare(track_a.artist);
-      });
-      Trackster.renderTracks(tracks);
-      artist_up=true;
-    }
+    artist_up = Trackster.sortColumn(artist_up, 'artist');
   });
 
-  //listener for sorting results: popularity decresing
   $('.listeners').on('click', function() {
-    if (lister_up){
-      tracks.sort(function(track_a, track_b){
-        return track_b.listeners - track_a.listeners;
-      });
-      Trackster.renderTracks(tracks);
-      lister_up = false;
-    }else{
-      tracks.sort(function(track_a, track_b){
-        return track_a.listeners - track_b.listeners;
-      });
-      Trackster.renderTracks(tracks);
-      lister_up = true;
-    }
+    lister_up = Trackster.sortColumn(lister_up, 'listeners');
   });
+
 });
 
-//implemented functions for main on ready function:
 
+//implemented functions for main on ready function:
 
 /*
   Given a search term as a string, query the LastFM API.
@@ -145,35 +102,45 @@ Trackster.renderTracks = function() {
   }
 };
 
+/*
+function to sort the differnt columns forward and backward
+*/
+Trackster.sortColumn = function(up, element){
+  tracks.sort(function(track_a, track_b){
+    var ret = (element == 'listeners') ?
+              track_a[element] - track_b[element]
+              : track_a[element].localeCompare(track_b[element]);
 
-
-Trackster.sortColumn = function(){
-  //these local variables must be parameters of course
-  var $columntitle = $('.song');
-  var up = song_up;
-
-  //and something like this:
-  objecttype = name;
-  //so that i can use: track_a.obectype.localeCompare(track_b.objecttype);
-
-  $columntitle.on('click', function() {
-    if (up){
-      //this part i don't know how to refactor :( how can you say you want a certain property of the object track?
-      tracks.sort(function(track_a, track_b){
-        return track_a.name.localeCompare(track_b.name);
-      });
-      Trackster.renderTracks(tracks);
-      up = false;
-    }else{
-      tracks.sort(function(track_a, track_b){
-        return track_b.name.localeCompare(track_a.name);
-      });
-      Trackster.renderTracks(tracks);
-      up = true;
-    }
+    return up ? ret: -ret;
   });
 
+  Trackster.renderTracks(tracks);
+  return !up;
 };
+
+
+// Trackster.sortColumn = function(up, element){
+//   if (up){
+//     tracks.sort(function(track_a, track_b){
+//       if (element === 'listeners') {
+//         return track_a[element] - track_b[element];
+//       } else {
+//         return track_a[element].localeCompare(track_b[element]);
+//       }
+//     });
+//   } else {
+//     tracks.sort(function(track_a, track_b){
+//       if (element === 'listeners'){
+//         return track_b[element] - track_a[element];
+//       } else{
+//         return track_b[element].localeCompare(track_a[element]);
+//       }
+//     });
+//   }
+//   Trackster.renderTracks(tracks);
+//   return !up;
+// };
+
 
 // ohne 'row' und nur 'list_item' dann wuerde folgendes funktionieren:
 

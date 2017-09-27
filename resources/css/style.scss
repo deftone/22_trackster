@@ -5,6 +5,7 @@ $color_1_bright: hsl(185, 100, 50);
 $color_2_dark:   hsl(148, 100, 20);
 $color_2_medium: hsl(148, 100, 35);
 $color_2_normal: hsl(148, 100, 50);
+$color_3: rgba(0,255,128,.2);
 
 html{
   font-size: 16px;
@@ -99,7 +100,7 @@ main{
     align-items: center;
     padding: .5rem;
     border-bottom: 1px solid $color_2_medium;
-    background-color: white;
+    background-color: $color_3;
     font-size: 1rem;
     span{
       padding-left: 0;
